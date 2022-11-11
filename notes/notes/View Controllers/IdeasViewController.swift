@@ -1,7 +1,7 @@
 import UIKit
 import CoreData
 
-class IdeasViewController: UITableViewController {
+class IdeasViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()

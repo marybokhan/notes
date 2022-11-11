@@ -1,5 +1,4 @@
 import UIKit
-import CoreData
 
 class NoteEditViewController: UIViewController {
     
@@ -15,9 +14,7 @@ class NoteEditViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = .systemMint
-
-        
+        self.view.backgroundColor = .systemBackground
         self.view.addSubview(self.textView)
         
         self.textView.translatesAutoresizingMaskIntoConstraints = false

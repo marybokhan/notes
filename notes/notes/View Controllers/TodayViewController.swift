@@ -47,8 +47,7 @@ class TodayViewController: UIViewController {
             }
         }
     }
-    
-    
+        
     
     private func setupUI() {
         self.title = "Today"

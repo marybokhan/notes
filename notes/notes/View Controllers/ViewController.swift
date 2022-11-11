@@ -145,7 +145,7 @@ class ViewController: UIViewController {
     }
     
     @objc func didTapShoppingListButton() {
-        let shoppingListViewController = ShoppingListViewController()
+        let shoppingListViewController = ShoppingListViewController(context: self.persistentContainer.viewContext)
         self.navigationController?.pushViewController(shoppingListViewController, animated: true)
     }
     

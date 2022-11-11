@@ -1,7 +1,7 @@
 import UIKit
 import CoreData
 
-class QuotesViewController: UITableViewController {
+class QuotesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
