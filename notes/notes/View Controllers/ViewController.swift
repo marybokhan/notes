@@ -6,7 +6,8 @@ class ViewController: UIViewController {
     // MARK: - Type declarations
     
     private enum Constants {
-        static let buttonCornerRadius = CGFloat(42.5)
+        static let buttonCornerRadius = CGFloat(20)
+        static let titleLabelFontSize = CGFloat(22)
     }
     
     // MARK: - Properties
@@ -17,9 +18,9 @@ class ViewController: UIViewController {
         let button = UIButton()
         button.backgroundColor = .systemYellow
         button.layer.cornerRadius = Constants.buttonCornerRadius
-        button.setTitle("⭐️ Today", for: .normal)
+        button.setTitle("Today", for: .normal)
         button.setTitleColor(.white, for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: 20)
+        button.titleLabel?.font = .boldSystemFont(ofSize: Constants.titleLabelFontSize)
         return button
     }()
     
@@ -27,9 +28,11 @@ class ViewController: UIViewController {
         let button = UIButton()
         button.backgroundColor = .systemGreen
         button.layer.cornerRadius = Constants.buttonCornerRadius
-        button.setTitle("🛍️ Shopping List", for: .normal)
+        button.setTitle("Shopping\nList", for: .normal)
         button.setTitleColor(.white, for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: 20)
+        button.titleLabel?.font = .boldSystemFont(ofSize: Constants.titleLabelFontSize)
+        button.titleLabel?.lineBreakMode = .byWordWrapping
+        button.titleLabel?.textAlignment = .center
         return button
     }()
     
@@ -37,9 +40,9 @@ class ViewController: UIViewController {
         let button = UIButton()
         button.backgroundColor = .systemBlue
         button.layer.cornerRadius = Constants.buttonCornerRadius
-        button.setTitle("💡 Ideas", for: .normal)
+        button.setTitle("Ideas", for: .normal)
         button.setTitleColor(.white, for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: 20)
+        button.titleLabel?.font = .boldSystemFont(ofSize: Constants.titleLabelFontSize)
         return button
     }()
     
@@ -47,9 +50,9 @@ class ViewController: UIViewController {
         let button = UIButton()
         button.backgroundColor = .systemPurple
         button.layer.cornerRadius = Constants.buttonCornerRadius
-        button.setTitle("✏️ Quotes", for: .normal)
+        button.setTitle("Quotes", for: .normal)
         button.setTitleColor(.white, for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: 20)
+        button.titleLabel?.font = .boldSystemFont(ofSize: Constants.titleLabelFontSize)
         return button
     }()
     
@@ -64,19 +67,26 @@ class ViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // todo: show progress indicator
+        
         self.persistentContainer.loadPersistentStores { _, optionalError in
             if let loadPersistentStoreError = optionalError {
                 print(loadPersistentStoreError.localizedDescription)
             }
             
-            // todo: remove progress indicator
-            
             self.setupUI()
         }
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationItem.largeTitleDisplayMode = .always
+    }
+    
+    // MARK: - Private logic
     
     private func setupUI() {
         let screenWidth = UIScreen.main.bounds.width
@@ -93,8 +103,6 @@ class ViewController: UIViewController {
         self.view.addSubview(self.ideasButton)
         self.view.addSubview(self.quotesButton)
         
-        
-        // Constraints: Buttons
         self.todayButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             self.todayButton.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: edgeToButtonOffset),
@@ -127,37 +135,29 @@ class ViewController: UIViewController {
             self.quotesButton.heightAnchor.constraint(equalTo: self.quotesButton.widthAnchor)
         ])
         
-        
-        // Buttons logic
         self.todayButton.addTarget(self, action: #selector(self.didTapTodayButton), for: .touchUpInside)
         self.shoppingListButton.addTarget(self, action: #selector(self.didTapShoppingListButton), for: .touchUpInside)
         self.ideasButton.addTarget(self, action: #selector(self.didTapIdeasButton), for: .touchUpInside)
         self.quotesButton.addTarget(self, action: #selector(self.didTapQuotesButton), for: .touchUpInside)
-        
     }
 
-    
-    // MARK: Functions
-    
-    @objc func didTapTodayButton() {
+    @objc private func didTapTodayButton() {
         let todayViewController = TodayViewController(context: self.persistentContainer.viewContext)
         self.navigationController?.pushViewController(todayViewController, animated: true)
     }
     
-    @objc func didTapShoppingListButton() {
+    @objc private func didTapShoppingListButton() {
         let shoppingListViewController = ShoppingListViewController(context: self.persistentContainer.viewContext)
         self.navigationController?.pushViewController(shoppingListViewController, animated: true)
     }
     
-    @objc func didTapIdeasButton() {
-        let ideasViewController = IdeasViewController()
+    @objc private func didTapIdeasButton() {
+        let ideasViewController = IdeasViewController(context: self.persistentContainer.viewContext)
         self.navigationController?.pushViewController(ideasViewController, animated: true)
     }
     
-    @objc func didTapQuotesButton() {
-        let quotesViewController = QuotesViewController()
+    @objc private func didTapQuotesButton() {
+        let quotesViewController = QuotesViewController(context: self.persistentContainer.viewContext)
         self.navigationController?.pushViewController(quotesViewController, animated: true)
     }
-
 }
-

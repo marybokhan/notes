@@ -11,6 +11,13 @@ class ShopListNote: NSManagedObject {
         self.date = Date()
     }
     
+    static func new(context: NSManagedObjectContext) -> ShopListNote {
+        let newNote = ShopListNote(context: context)
+        newNote.text = ""
+        newNote.date = Date()
+        return newNote
+    }
+    
     static func createFetchRequest() -> NSFetchRequest<ShopListNote> {
         return NSFetchRequest<ShopListNote>(entityName: "ShopListNote")
     }

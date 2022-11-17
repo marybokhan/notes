@@ -13,6 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let navigationController = UINavigationController(rootViewController: viewController)
         self.window = UIWindow(frame: UIScreen.main.bounds)
         self.window?.rootViewController = navigationController
+        self.window?.overrideUserInterfaceStyle = .light
         self.window?.makeKeyAndVisible()
         return true
     }

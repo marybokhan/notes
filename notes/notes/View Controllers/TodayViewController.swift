@@ -3,6 +3,8 @@ import CoreData
 
 class TodayViewController: UIViewController {
     
+    // MARK: - Properties
+    
     let tableView: UITableView = {
         let table = UITableView()
         table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
@@ -12,6 +14,8 @@ class TodayViewController: UIViewController {
     var notes = [TodayNote]()
     let context: NSManagedObjectContext
     
+    // MARK: - Init
+    
     init(context: NSManagedObjectContext) {
         self.context = context
         super.init(nibName: nil, bundle: nil)
@@ -20,6 +24,8 @@ class TodayViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +54,7 @@ class TodayViewController: UIViewController {
         }
     }
         
+    // MARK: - Private logic
     
     private func setupUI() {
         self.title = "Today"
@@ -68,8 +75,8 @@ class TodayViewController: UIViewController {
         ])
     }
     
-    @objc func addNote() {
-        let newNote = TodayNote(context: self.context) // создание новой заметки
+    @objc private func addNote() {
+        let newNote = TodayNote.new(context: self.context)
         self.notes.append(newNote)
         self.edit(note: newNote)
     }

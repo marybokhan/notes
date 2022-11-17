@@ -1,7 +1,7 @@
 import Foundation
 import CoreData
 
-class TodayNote: NSManagedObject {
+class QuoteNote: NSManagedObject {
     
     @NSManaged var date: Date
     @NSManaged var text: String
@@ -11,14 +11,14 @@ class TodayNote: NSManagedObject {
         self.date = Date()
     }
     
-    static func new(context: NSManagedObjectContext) -> TodayNote {
-        let newNote = TodayNote(context: context)
+    static func new(context: NSManagedObjectContext) -> QuoteNote {
+        let newNote = QuoteNote(context: context)
         newNote.text = ""
         newNote.date = Date()
         return newNote
     }
     
-    static func createFetchRequest() -> NSFetchRequest<TodayNote> {
-        return NSFetchRequest<TodayNote>(entityName: "TodayNote")
+    static func createFetchRequest() -> NSFetchRequest<QuoteNote> {
+        return NSFetchRequest<QuoteNote>(entityName: "QuoteNote")
     }
 }

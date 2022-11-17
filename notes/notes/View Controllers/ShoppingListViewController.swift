@@ -3,6 +3,8 @@ import CoreData
 
 class ShoppingListViewController: UIViewController {
     
+    // MARK: - Properties
+    
     let tableView: UITableView = {
         let table = UITableView()
         table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
@@ -12,6 +14,8 @@ class ShoppingListViewController: UIViewController {
     var notes = [ShopListNote]()
     let context: NSManagedObjectContext
     
+    // MARK: - Init
+    
     init(context: NSManagedObjectContext) {
         self.context = context
         super.init(nibName: nil, bundle: nil)
@@ -20,6 +24,8 @@ class ShoppingListViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    //MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +41,20 @@ class ShoppingListViewController: UIViewController {
         self.setupUI()
         
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        if self.context.hasChanges {
+            do {
+                try self.context.save()
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    // MARK: - Private logic
     
     private func setupUI() {
         self.title = "Shopping List"
@@ -55,8 +75,8 @@ class ShoppingListViewController: UIViewController {
         ])
     }
     
-    @objc func addNote() {
-        let newNote = ShopListNote(context: self.context)
+    @objc private func addNote() {
+        let newNote = ShopListNote.new(context: self.context)
         self.notes.append(newNote)
         self.edit(note: newNote)
     }

@@ -10,6 +10,8 @@
 		A100A80F291843CF002FD41F /* ShoppingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100A80E291843CF002FD41F /* ShoppingListViewController.swift */; };
 		A100A81129184421002FD41F /* IdeasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100A81029184421002FD41F /* IdeasViewController.swift */; };
 		A100A8132918444D002FD41F /* QuotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100A8122918444D002FD41F /* QuotesViewController.swift */; };
+		A10BFBCB291E708B0098A778 /* IdeaNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10BFBCA291E708B0098A778 /* IdeaNote.swift */; };
+		A10BFBCD291EB1300098A778 /* QuoteNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10BFBCC291EB1300098A778 /* QuoteNote.swift */; };
 		A11E356F291D7A3400691E31 /* ShopListNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11E356E291D7A3400691E31 /* ShopListNote.swift */; };
 		A128CEB9291BC531000A61A8 /* TodayNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = A128CEB8291BC531000A61A8 /* TodayNote.swift */; };
 		A159950629128E9100A8604D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A159950529128E9100A8604D /* AppDelegate.swift */; };
@@ -26,6 +28,8 @@
 		A100A80E291843CF002FD41F /* ShoppingListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListViewController.swift; sourceTree = "<group>"; };
 		A100A81029184421002FD41F /* IdeasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeasViewController.swift; sourceTree = "<group>"; };
 		A100A8122918444D002FD41F /* QuotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotesViewController.swift; sourceTree = "<group>"; };
+		A10BFBCA291E708B0098A778 /* IdeaNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeaNote.swift; sourceTree = "<group>"; };
+		A10BFBCC291EB1300098A778 /* QuoteNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteNote.swift; sourceTree = "<group>"; };
 		A11E356E291D7A3400691E31 /* ShopListNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopListNote.swift; sourceTree = "<group>"; };
 		A128CEB8291BC531000A61A8 /* TodayNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayNote.swift; sourceTree = "<group>"; };
 		A159950229128E9100A8604D /* notes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = notes.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -56,6 +60,8 @@
 			children = (
 				A128CEB8291BC531000A61A8 /* TodayNote.swift */,
 				A11E356E291D7A3400691E31 /* ShopListNote.swift */,
+				A10BFBCA291E708B0098A778 /* IdeaNote.swift */,
+				A10BFBCC291EB1300098A778 /* QuoteNote.swift */,
 			);
 			path = "Managed Objects";
 			sourceTree = "<group>";
@@ -93,8 +99,8 @@
 			isa = PBXGroup;
 			children = (
 				A159950529128E9100A8604D /* AppDelegate.swift */,
-				A128CEB7291BC4B4000A61A8 /* View Controllers */,
 				A1EE74E9291AC4E600A39B5D /* AppConstants.swift */,
+				A128CEB7291BC4B4000A61A8 /* View Controllers */,
 				A11E3570291D7D8400691E31 /* Managed Objects */,
 				A159951129128E9200A8604D /* Assets.xcassets */,
 				A159951329128E9200A8604D /* LaunchScreen.storyboard */,
@@ -176,6 +182,7 @@
 			files = (
 				A15AEDB7291591F1007C5555 /* TodayViewController.swift in Sources */,
 				A1EE74EA291AC4E600A39B5D /* AppConstants.swift in Sources */,
+				A10BFBCB291E708B0098A778 /* IdeaNote.swift in Sources */,
 				A100A81129184421002FD41F /* IdeasViewController.swift in Sources */,
 				A11E356F291D7A3400691E31 /* ShopListNote.swift in Sources */,
 				A1EE74E8291AA6C300A39B5D /* NoteEditViewController.swift in Sources */,
@@ -184,6 +191,7 @@
 				A100A80F291843CF002FD41F /* ShoppingListViewController.swift in Sources */,
 				A159950629128E9100A8604D /* AppDelegate.swift in Sources */,
 				A159951029128E9100A8604D /* notes.xcdatamodeld in Sources */,
+				A10BFBCD291EB1300098A778 /* QuoteNote.swift in Sources */,
 				A100A8132918444D002FD41F /* QuotesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
